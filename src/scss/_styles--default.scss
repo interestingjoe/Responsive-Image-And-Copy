@@ -22,7 +22,7 @@
     background: white;
     font-size: 0;
     .text-block {
-        width: 37.645448%;
+        // width: 37.645448%;
         background: #e3e3e3;
         position: relative;
         display: inline-block;
@@ -52,11 +52,8 @@
     .image-block {
         display: inline-block;
         vertical-align: top;
-        width: 24.709104%;
+        // width: 24.709104%;
         .image-container {
-        }
-        img {
-            width: 100%;
         }
     }
 }

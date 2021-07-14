@@ -9,7 +9,24 @@
         textBlock: document.getElementsByClassName('text-block'),
         imageBlock: document.getElementsByClassName('image-block'),
         init: () => {
-            main.setTextBlockHeight();
+            main.setImageHeight();
+            // main.setTextBlockHeight();
+        },
+        setImageHeight: () => {
+            let naturalHeight = document.getElementById('image').naturalHeight;
+            let renderImageHeight = () => {
+                let windowHeight = window.innerHeight;
+
+                document.getElementById('image').style.height = (windowHeight <= naturalHeight) ? 
+                    windowHeight + 'px' : 
+                    naturalHeight + 'px';
+            }
+
+            renderImageHeight();
+            
+            $(window).on('resize', () => {
+                renderImageHeight();
+            });
         },
         setTextBlockHeight: () => {
             // let textBlockRatio = 0.37645448;
