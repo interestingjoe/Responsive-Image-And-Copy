@@ -6,12 +6,33 @@
 
 (() => {
     let main = {
+        textBlock: document.getElementsByClassName('text-block'),
+        imageBlock: document.getElementsByClassName('image-block'),
         init: () => {
-            main.start();
+            main.setTextBlockHeight();
         },
-        start: () => {
-            let textBlockRatio = 0.37645448;
-            console.log("Test");
+        setTextBlockHeight: () => {
+            // let textBlockRatio = 0.37645448;
+            let imageHeight = -1;
+            let renderTextBlockHeight = imageHeight => {
+                for (let i = 0; i < main.textBlock.length; i++) {
+                    main.textBlock[i].style.height = imageHeight + 'px';
+                }
+            }
+
+            // Renders Text Block height on page load.
+            renderTextBlockHeight(main.imageBlock[0].offsetHeight);
+
+            // Rerenders Text Block height during window resize.
+            $(window).on('resize', () => {
+                imageHeight = main.imageBlock[0].offsetHeight;
+
+                if (imageHeight === -1) {
+                    return;
+                }
+
+                renderTextBlockHeight(imageHeight);
+            });
         }
     };
 
