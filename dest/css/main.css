@@ -53,21 +53,27 @@ img {
 .container .text-block {
   width: 37.645448%;
   background: #e3e3e3;
+  position: relative;
   display: inline-block;
   vertical-align: top;
-}
-
-.container .text-block .text-wrapper {
-  margin: 0 10%;
   overflow: auto;
 }
 
+.container .text-block .text-wrapper {
+  margin: 0 auto;
+  padding: 0 10%;
+  position: absolute;
+  top: 50%;
+  transform: translate(0, -50%);
+  text-align: center;
+}
+
 .container .text-block .text-wrapper h1 {
-  font-size: 22px;
-  margin: 0;
+  margin: 0 0 7px;
   padding: 0;
-  font-family: Arial, Helvetica, sans-serif;
-  font-weight: 400;
+  font-size: 30px;
+  font-family: "Times New Roman", Times, serif;
+  font-weight: 700;
   font-stretch: normal;
   font-style: normal;
   line-height: normal;
@@ -76,11 +82,11 @@ img {
 }
 
 .container .text-block .text-wrapper h3 {
-  font-size: 16px;
   margin: 0;
   padding: 0;
-  font-family: Arial, Helvetica, sans-serif;
-  font-weight: 400;
+  font-size: 22px;
+  font-family: "Times New Roman", Times, serif;
+  font-weight: 700;
   font-stretch: normal;
   font-style: normal;
   line-height: normal;
