@@ -8,48 +8,35 @@
     let main = {
         textBlock: document.getElementsByClassName('text-block'),
         imageBlock: document.getElementsByClassName('image-block'),
+        image: document.getElementById('image'),
         init: () => {
-            main.setImageHeight();
-            // main.setTextBlockHeight();
+            $(window).on('load resize', () => {
+                main.setImageHeight();
+                main.setTextBlockWidth();
+                main.setTextBlockHeight();
+            });
         },
         setImageHeight: () => {
-            let naturalHeight = document.getElementById('image').naturalHeight;
-            let renderImageHeight = () => {
-                let windowHeight = window.innerHeight;
+            let self = this;
+            let naturalHeight = self.image.naturalHeight;
+            let windowHeight = window.innerHeight;
 
-                document.getElementById('image').style.height = (windowHeight <= naturalHeight) ? 
-                    windowHeight + 'px' : 
-                    naturalHeight + 'px';
+            self.image.style.height = (windowHeight <= naturalHeight) ? 
+                windowHeight + 'px' : 
+                naturalHeight + 'px';
+        },
+        setTextBlockWidth: () => {
+            let self = this;
+            let imagePercent = (self.image.offsetWidth / window.innerWidth) * 100;
+            let half = (100 - imagePercent) / 2;
+            for (let i = 0; i < main.textBlock.length; i++) {
+                main.textBlock[i].style.width = half + '%';
             }
-
-            renderImageHeight();
-            
-            $(window).on('resize', () => {
-                renderImageHeight();
-            });
         },
         setTextBlockHeight: () => {
-            // let textBlockRatio = 0.37645448;
-            let imageHeight = -1;
-            let renderTextBlockHeight = imageHeight => {
-                for (let i = 0; i < main.textBlock.length; i++) {
-                    main.textBlock[i].style.height = imageHeight + 'px';
-                }
+            for (let i = 0; i < main.textBlock.length; i++) {
+                main.textBlock[i].style.height = main.imageBlock[0].offsetHeight + 'px';
             }
-
-            // Renders Text Block height on page load.
-            renderTextBlockHeight(main.imageBlock[0].offsetHeight);
-
-            // Rerenders Text Block height during window resize.
-            $(window).on('resize', () => {
-                imageHeight = main.imageBlock[0].offsetHeight;
-
-                if (imageHeight === -1) {
-                    return;
-                }
-
-                renderTextBlockHeight(imageHeight);
-            });
         }
     };
 
