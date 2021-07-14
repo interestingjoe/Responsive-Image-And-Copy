@@ -1,0 +1,35 @@
+/*
+ Instructions:
+ Check "answer-preview-image.png" for the final look of the expected result
+ Check "answer-detailed-guidelines.png" for detailed requirements, note that 
+ we have 3 special requirements:
+
+1) as the window is resized, keep the image centered
+2) maintain the image ratio (the text box ratio may change)
+3) the image should not be cut off in any size window
+
+ Check "answer-preview-video.mov" for visual requirements when the window 
+ is resized. NOTE: resizing the window will cause the viewport ratio to 
+ change. The affects scaling, height, and width of content. Please compare 
+ the video to the detailed guidelines.
+*/
+
+.container {
+    display: block;
+    position: relative;
+    width: 100%;
+    margin: 0px auto;
+    background: white;
+    .text-block {
+        width: 37.645448%;
+        background: #e3e3e3;
+        .text-wrapper {
+            margin: 0 10%;
+            overflow: auto;
+        }
+    }
+    .image-block {
+        .image-container {
+        }
+    }
+}
